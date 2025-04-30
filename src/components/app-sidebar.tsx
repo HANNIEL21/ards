@@ -2,14 +2,10 @@ import * as React from "react"
 import {
   AudioWaveform,
   BookOpen,
-  Bot,
   Command,
   Frame,
   GalleryVerticalEnd,
-  Map,
   PieChart,
-  Settings2,
-  SquareTerminal,
   Users,
 } from "lucide-react"
 
@@ -55,6 +51,7 @@ const data = {
       title: "User",
       url: "#",
       icon: Users,
+      isActive: true,
       items: [
         {
           title: "Admins",
@@ -70,18 +67,19 @@ const data = {
       title: "Documentation",
       url: "#",
       icon: BookOpen,
+      isActive: true,
       items: [
         {
           title: "Statement of result",
-          url: "#",
+          url: "/dashboard/statements",
         },
         {
           title: "Transcript",
-          url: "#",
+          url: "/dashboard/transcripts",
         },
         {
           title: "Certificate",
-          url: "#",
+          url: "/dashboard/certificates",
         },
       ],
     },
@@ -89,18 +87,19 @@ const data = {
       title: "Proccess",
       url: "#",
       icon: AudioWaveform,
+      isActive: true,
       items: [
         {
           title: "Upload",
-          url: "#",
+          url: "/dashboard/upload",
         },
         {
           title: "Verification",
-          url: "#",
+          url: "/dashboard/verification",
         },
         {
-          title: "stamp",
-          url: "#",
+          title: "Stamp",
+          url: "/dashboard/stamp",
         },
       ],
     },

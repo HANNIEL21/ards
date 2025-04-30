@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { DataTable } from './data-table'
 import { columns, Admin } from './columns'
+import SidebarHead from "@/components/sidebar-header"
 
 type Props = {}
 
@@ -24,6 +25,8 @@ function Index(props: Props) {
 
     return (
         <main>
+            <SidebarHead page="Admins"/>
+            
             <div className="container mx-auto py-10">
                 <DataTable columns={columns} data={data} />
             </div>

@@ -1,20 +1,56 @@
-import React from 'react'
+import { useEffect, useState } from "react"
+import { DataTable } from './data-table'
+import { columns, Alumni } from './columns'
+import SidebarHead from "@/components/sidebar-header"
 
 type Props = {}
 
 const Index = (props: Props) => {
+  const [data, setData] = useState<Alumni[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchData() {
+      const payments: Alumni[] = await getData()
+      setData(payments)
+      setLoading(false)
+    }
+
+    fetchData()
+  }, [])
+
+  if (loading) {
+    return <div className="p-10 text-center text-muted-foreground">Loading...</div>
+  }
+
   return (
-    <div>
-      <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
-        <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-          <div className="aspect-video rounded-xl bg-muted/50" />
-          <div className="aspect-video rounded-xl bg-muted/50" />
-          <div className="aspect-video rounded-xl bg-muted/50" />
-        </div>
-        <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+    <main>
+      <SidebarHead page="Alumni"/>
+      
+      <div className="container mx-auto py-2">
+        <DataTable columns={columns} data={data} />
       </div>
-    </div>
+    </main>
   )
+}
+
+async function getData(): Promise<Alumni[]> {
+    return [
+        {
+            id: "728ed52f",
+            firstname: "John",
+            lastname: "Doe",
+            role: "ADMIN",
+            email: "m@example.com",
+        },
+        {
+            id: "902jd12k",
+            firstname: "Jane",
+            lastname: "Doe",
+            role: "REGISTRA",
+            email: "jane@example.com",
+        },
+    ]
 }
 
 export default Index
