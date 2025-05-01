@@ -1,13 +1,19 @@
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { GalleryVerticalEnd } from 'lucide-react'
+import { GalleryVerticalEnd, MoveLeft } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {}
 
 const Register = (props: Props) => {
+
+  const navigate = useNavigate();
   return (
     <main className="flex min-h-screen items-center justify-center bg-background px-4">
+      <Button className='absolute top-5 left-5' onClick={() => navigate("/")}>
+        <MoveLeft size={38} />
+      </Button>
       <div className="w-full max-w-md space-y-8">
         <div className="flex flex-col items-center space-y-4">
           <a href="#" className="flex flex-col items-center space-y-2">

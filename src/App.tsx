@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Login from "./pages/auth/Login"
 import Welcome from "./pages/auth/Welcome"
 import Register from "./pages/auth/Register"
+import Verify from "./pages/auth/Verify"
 
 // Dashboard
 import Layout from "./pages/dashboard/Layout"
@@ -17,16 +18,20 @@ import ViewTranscript from "./pages/dashboard/transcript/view"
 import Certificate from "./pages/dashboard/certificate/Index"
 import CreateCertificate from "./pages/dashboard/certificate/create"
 import ViewCertificate from "./pages/dashboard/certificate/view"
-
 import Upload from "./pages/dashboard/upload/Index"
 import Verification from "./pages/dashboard/verification/Index"
 import Stamp from "./pages/dashboard/stamp/Index"
+
+// USER
+import User from "./pages/user/Root"
+import Profile from "./pages/user/Profile"
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Welcome />} />
+        <Route path="/verify" element={<Verify />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
@@ -58,6 +63,10 @@ function App() {
 
           {/* Stamp */}
           <Route path="stamp" element={<Stamp />} />
+        </Route>
+
+        <Route path="/user" element={<User />}>
+          <Route index element={<Profile />} />
         </Route>
       </Routes>
     </Router>
