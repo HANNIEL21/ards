@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 import {
   ColumnDef,
   flexRender,
@@ -10,7 +10,7 @@ import {
   SortingState,
   ColumnFiltersState,
   VisibilityState,
-} from "@tanstack/react-table"
+} from "@tanstack/react-table";
 
 import {
   Table,
@@ -19,39 +19,43 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { ChevronDown } from "lucide-react"
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { ChevronDown } from "lucide-react";
 
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuCheckboxItem,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
 interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
-  const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
-  const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
-  const [globalFilter, setGlobalFilter] = React.useState("")
+  const [sorting, setSorting] = React.useState<SortingState>([]);
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  );
+  const [columnVisibility, setColumnVisibility] =
+    React.useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = React.useState({});
+  const [globalFilter, setGlobalFilter] = React.useState("");
 
+  // @ts-expect-error - customGlobalFilter is not a standard function
   function customGlobalFilter(row: any, columnId: string, filterValue: string) {
-    const name = row.original.student_name?.toLowerCase()
-    const matric = row.original.matric_no?.toLowerCase()
-    const search = filterValue.toLowerCase()
-    return name?.includes(search) || matric?.includes(search)
+    const name = row.original.student_name?.toLowerCase();
+    const matric = row.original.matric_no?.toLowerCase();
+    const search = filterValue.toLowerCase();
+    return name?.includes(search) || matric?.includes(search);
   }
 
   const table = useReactTable({
@@ -74,7 +78,7 @@ export function DataTable<TData, TValue>({
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
-  })
+  });
 
   return (
     <div className="w-full mx-auto px-4">
@@ -121,7 +125,10 @@ export function DataTable<TData, TValue>({
                   <TableHead key={header.id}>
                     {header.isPlaceholder
                       ? null
-                      : flexRender(header.column.columnDef.header, header.getContext())}
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                   </TableHead>
                 ))}
               </TableRow>
@@ -130,17 +137,26 @@ export function DataTable<TData, TValue>({
           <TableBody>
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
                     </TableCell>
                   ))}
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={table.getAllColumns().length} className="h-24 text-center">
+                <TableCell
+                  colSpan={table.getAllColumns().length}
+                  className="h-24 text-center"
+                >
                   No results.
                 </TableCell>
               </TableRow>
@@ -175,6 +191,5 @@ export function DataTable<TData, TValue>({
         </div>
       </div>
     </div>
-
-  )
+  );
 }

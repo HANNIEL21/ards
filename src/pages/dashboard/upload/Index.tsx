@@ -1,11 +1,5 @@
-import React from 'react'
+const Index = () => {
+  return <div>Index</div>;
+};
 
-type Props = {}
-
-const Index = (props: Props) => {
-  return (
-    <div>Index</div>
-  )
-}
-
-export default Index
+export default Index;

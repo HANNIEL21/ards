@@ -1,13 +1,5 @@
-import React from 'react'
+const Index = () => {
+  return <main></main>;
+};
 
-type Props = {}
-
-const Index = (props: Props) => {
-  return (
-    <main>
-        
-    </main>
-  )
-}
-
-export default Index
+export default Index;

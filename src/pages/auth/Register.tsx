@@ -1,17 +1,14 @@
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { GalleryVerticalEnd, MoveLeft } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { GalleryVerticalEnd, MoveLeft } from "lucide-react";
+import { useNavigate } from "react-router";
 
-type Props = {}
-
-const Register = (props: Props) => {
-
+const Register = () => {
   const navigate = useNavigate();
   return (
     <main className="flex min-h-screen items-center justify-center bg-background px-4">
-      <Button className='absolute top-5 left-5' onClick={() => navigate("/")}>
+      <Button className="absolute top-5 left-5" onClick={() => navigate("/")}>
         <MoveLeft size={38} />
       </Button>
       <div className="w-full max-w-md space-y-8">
@@ -25,7 +22,10 @@ const Register = (props: Props) => {
           <h1 className="text-2xl font-bold">Welcome to RSU ARDS.</h1>
           <p className="text-sm text-muted-foreground">
             Already have an account?{" "}
-            <a href="/login" className="underline underline-offset-4 hover:text-primary">
+            <a
+              href="/login"
+              className="underline underline-offset-4 hover:text-primary"
+            >
               Login
             </a>
           </p>
@@ -98,17 +98,24 @@ const Register = (props: Props) => {
 
         <p className="text-center text-xs text-muted-foreground">
           By clicking continue, you agree to our{" "}
-          <a href="#" className="underline underline-offset-4 hover:text-primary">
+          <a
+            href="#"
+            className="underline underline-offset-4 hover:text-primary"
+          >
             Terms of Service
           </a>{" "}
           and{" "}
-          <a href="#" className="underline underline-offset-4 hover:text-primary">
+          <a
+            href="#"
+            className="underline underline-offset-4 hover:text-primary"
+          >
             Privacy Policy
-          </a>.
+          </a>
+          .
         </p>
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

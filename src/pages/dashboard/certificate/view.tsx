@@ -1,11 +1,5 @@
-import React from 'react'
+const view = () => {
+  return <div>view</div>;
+};
 
-type Props = {}
-
-const view = (props: Props) => {
-  return (
-    <div>view</div>
-  )
-}
-
-export default view
+export default view;

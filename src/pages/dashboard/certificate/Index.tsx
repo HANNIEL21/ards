@@ -1,26 +1,26 @@
-import { useEffect, useState } from "react"
-import { DataTable } from './data-table'
-import { columns, CERTIFICATE } from './columns'
-import SidebarHead from "@/components/sidebar-header"
+import { useEffect, useState } from "react";
+import { DataTable } from "./data-table";
+import { columns, CERTIFICATE } from "./columns";
+import SidebarHead from "@/components/sidebar-header";
 
-type Props = {}
-
-const Index = (props: Props) => {
-  const [data, setData] = useState<CERTIFICATE[]>([])
-  const [loading, setLoading] = useState(true)
+const Index = () => {
+  const [data, setData] = useState<CERTIFICATE[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
-      const payments: CERTIFICATE[] = await getData()
-      setData(payments)
-      setLoading(false)
+      const payments: CERTIFICATE[] = await getData();
+      setData(payments);
+      setLoading(false);
     }
 
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   if (loading) {
-    return <div className="p-10 text-center text-muted-foreground">Loading...</div>
+    return (
+      <div className="p-10 text-center text-muted-foreground">Loading...</div>
+    );
   }
 
   return (
@@ -37,8 +37,8 @@ const Index = (props: Props) => {
         <DataTable columns={columns} data={data} />
       </div>
     </main>
-  )
-}
+  );
+};
 
 async function getData(): Promise<CERTIFICATE[]> {
   return [
@@ -97,7 +97,4 @@ async function getData(): Promise<CERTIFICATE[]> {
   ];
 }
 
-
-
-
-export default Index
+export default Index;

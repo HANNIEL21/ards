@@ -1,25 +1,26 @@
-import * as React from "react"
+import * as React from "react";
 import {
   AudioWaveform,
   BookOpen,
+  CogIcon,
   Command,
   Frame,
   GalleryVerticalEnd,
   PieChart,
   Users,
-} from "lucide-react"
+} from "lucide-react";
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+import { NavMain } from "@/components/nav-main";
+import { NavProjects } from "@/components/nav-projects";
+import { NavUser } from "@/components/nav-user";
+import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 // This is sample data.
 const data = {
@@ -46,28 +47,79 @@ const data = {
     },
   ],
   navMain: [
-    
     {
-      title: "User",
-      url: "#",
+      title: "Document Requests",
+      url: "/dashboard/document_requests",
       icon: Users,
-      isActive: true,
+      items: [
+        {
+          title: "All",
+          url: "/dashboard/document_requests",
+        },
+        {
+          title: "Pending",
+          url: "/dashboard/document_requests?status=pending",
+        },
+        {
+          title: "Processing",
+          url: "/dashboard/document_requests?status=processing",
+        },
+        {
+          title: "Approved",
+          url: "/dashboard/document_requests?status=approved",
+        },
+        {
+          title: "Delivered",
+          url: "/dashboard/document_requests?status=delivered",
+        },
+        {
+          title: "Failed",
+          url: "/dashboard/document_requests?status=failed",
+        },
+      ],
+    },
+    {
+      title: "Payments",
+      url: "/dashboard/payments",
+      icon: Users,
+      items: [
+        {
+          title: "All",
+          url: "/dashboard/payments",
+        },
+        {
+          title: "Pending",
+          url: "/dashboard/payments?status=pending",
+        },
+        {
+          title: "Successful",
+          url: "/dashboard/payments?status=successful",
+        },
+        {
+          title: "Failed",
+          url: "/dashboard/payments?status=failed",
+        },
+      ],
+    },
+    {
+      title: "Users",
+      url: "/dashboard/users",
+      icon: Users,
       items: [
         {
           title: "Admins",
-          url: "/dashboard/admin",
+          url: "/dashboard/users/admins",
         },
         {
           title: "Alumni",
-          url: "/dashboard/alumni",
-        }
+          url: "/dashboard/users/alumni",
+        },
       ],
     },
     {
       title: "Documentation",
       url: "#",
       icon: BookOpen,
-      isActive: true,
       items: [
         {
           title: "Statement of result",
@@ -87,7 +139,6 @@ const data = {
       title: "Proccess",
       url: "#",
       icon: AudioWaveform,
-      isActive: true,
       items: [
         {
           title: "Upload",
@@ -103,6 +154,21 @@ const data = {
         },
       ],
     },
+    {
+      title: "Settings",
+      url: "/dashboard/settings",
+      icon: CogIcon,
+      items: [
+        {
+          title: "Payment Gateways",
+          url: "/dashboard/settings/payment_gateways",
+        },
+        {
+          title: "Document Types",
+          url: "/dashboard/settings/document_types",
+        },
+      ],
+    },
   ],
   projects: [
     {
@@ -114,9 +180,9 @@ const data = {
       name: "Analisys",
       url: "#",
       icon: PieChart,
-    }
+    },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -129,9 +195,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }

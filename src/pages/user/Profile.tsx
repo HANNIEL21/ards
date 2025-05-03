@@ -1,11 +1,5 @@
-import React from 'react'
+const Profile = () => {
+  return <div>Profile</div>;
+};
 
-type Props = {}
-
-const Profile = (props: Props) => {
-    return (
-        <div>Profile</div>
-    )
-}
-
-export default Profile
+export default Profile;
