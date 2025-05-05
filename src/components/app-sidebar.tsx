@@ -58,23 +58,23 @@ const data = {
         },
         {
           title: "Pending",
-          url: "/dashboard/document_requests?status=pending",
+          url: "/dashboard/document_requests/pending",
         },
         {
           title: "Processing",
-          url: "/dashboard/document_requests?status=processing",
+          url: "/dashboard/document_requests/processing",
         },
         {
           title: "Approved",
-          url: "/dashboard/document_requests?status=approved",
+          url: "/dashboard/document_requests/approved",
         },
         {
           title: "Delivered",
-          url: "/dashboard/document_requests?status=delivered",
+          url: "/dashboard/document_requests/delivered",
         },
         {
           title: "Failed",
-          url: "/dashboard/document_requests?status=failed",
+          url: "/dashboard/document_requests/failed",
         },
       ],
     },
@@ -89,15 +89,15 @@ const data = {
         },
         {
           title: "Pending",
-          url: "/dashboard/payments?status=pending",
+          url: "/dashboard/payments/pending",
         },
         {
           title: "Successful",
-          url: "/dashboard/payments?status=successful",
+          url: "/dashboard/payments/successful",
         },
         {
           title: "Failed",
-          url: "/dashboard/payments?status=failed",
+          url: "/dashboard/payments/failed",
         },
       ],
     },

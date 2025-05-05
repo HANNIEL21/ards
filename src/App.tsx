@@ -56,8 +56,12 @@ function App() {
           <Route path="/dashboard" element={<Layout />}>
             <Route index element={<Dashboard />} />
 
-            <Route path="document_requests" element={<DocumentRequests />} />
-            <Route path="payments" element={<Payments />} />
+            <Route
+              path="document_requests/:status?"
+              element={<DocumentRequests />}
+            />
+
+            <Route path="payments/:status?" element={<Payments />} />
 
             {/* Users */}
             <Route path="users">

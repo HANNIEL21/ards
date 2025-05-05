@@ -25,6 +25,7 @@ api.interceptors.response.use(
   },
   async (error) => {
     const originalRequest = error.config;
+    console.log(error.response.status);
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       const refreshToken = Cookies.get("refresh_token");
@@ -55,6 +56,8 @@ api.interceptors.response.use(
           Cookies.remove("refresh_token");
           return Promise.reject(error.response?.data || error.message);
         }
+      } else {
+        window.location.pathname = "/";
       }
     }
     return Promise.reject(error.response?.data || error.message);

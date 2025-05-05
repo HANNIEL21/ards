@@ -17,6 +17,7 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 import { NavLink, useLocation, useNavigate } from "react-router";
+import { cn } from "@/lib/utils";
 
 export function NavMain({
   items,
@@ -32,10 +33,7 @@ export function NavMain({
     }[];
   }[];
 }) {
-  const navigate = useNavigate();
   const location = useLocation();
-
-  console.log("location", location.pathname);
   return (
     <SidebarGroup>
       <SidebarMenu>
@@ -50,7 +48,7 @@ export function NavMain({
               <CollapsibleTrigger asChild>
                 <SidebarMenuButton
                   tooltip={item.title}
-                  onClick={() => navigate(item.url)}
+                  isActive={item.url.includes(location.pathname)}
                 >
                   {item.icon && <item.icon />}
                   <span>{item.title}</span>
@@ -63,8 +61,11 @@ export function NavMain({
                     <SidebarMenuSubItem key={subItem.title}>
                       <SidebarMenuSubButton asChild>
                         <NavLink
+                          end
                           to={subItem.url}
-                          className="[&.active]:text-accent-foreground [&.active]:bg-accent"
+                          className={cn(
+                            "[&.active]:text-accent-foreground [&.active]:bg-accent"
+                          )}
                         >
                           <span>{subItem.title}</span>
                         </NavLink>

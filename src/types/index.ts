@@ -89,13 +89,16 @@ export type DocumentType = {
 export type DocumentRequest = {
   id: string;
   user_id: string;
+  user?: Partial<Alumni>;
   document_type_id: string;
+  document_type: Partial<DocumentType>;
   recipient_name?: string;
   recipient_email?: string;
   recipient_phone?: string;
   recipient_address?: string;
   reference_number: string;
   type: DocumentRequestType;
+  status: DocumentRequestStatus;
   notes: string;
   created_at: string;
   updated_at: string;
@@ -115,8 +118,11 @@ export type PaymentGateway = {
 export type Payment = {
   id: string;
   user_id: string;
+  user?: Partial<Alumni>;
   request_id: string;
+  request?: Partial<DocumentRequest>;
   payment_gateway_id: string;
+  payment_gateway?: Partial<PaymentGateway>;
   amount: number;
   status: PaymentStatus;
   reference?: string;

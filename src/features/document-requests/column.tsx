@@ -25,10 +25,21 @@ export const columns: ColumnDef<DocumentRequest>[] = [
     enableSorting: false,
     enableHiding: false,
   },
+  { accessorKey: "id", header: "Id" },
+  {
+    accessorKey: "user.matric_number",
+    header: "Matric Number",
+  },
+  {
+    accessorKey: "document.name",
+    header: "Document Type",
+  },
+  { accessorKey: "payment.status", header: "Payment Status" },
   {
     accessorKey: "type",
     header: "Type",
   },
+  { accessorKey: "status", header: "Status" },
   {
     accessorKey: "created_at",
     header: "Created At",

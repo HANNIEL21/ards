@@ -1,16 +1,16 @@
-import { DataTable } from "./data-table";
 import { columns } from "./columns";
-import SidebarHead from "@/components/sidebar-header";
 import { useAdmins } from "@/features/admins/useAdmins";
+import PageHeader from "@/components/page-header";
+import { DataTable } from "@/components/data-table";
 
 function Index() {
   const { data: admins } = useAdmins();
 
   return (
     <main>
-      <SidebarHead page="Admins" />
+      <PageHeader page="Admins" />
 
-      <div className="container mx-auto py-10">
+      <div className="container mx-auto">
         <DataTable columns={columns} data={admins || []} />
       </div>
     </main>
