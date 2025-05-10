@@ -1,6 +1,8 @@
+import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { DocumentRequest } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
+import { useNavigate } from "react-router";
 
 export const columns: ColumnDef<DocumentRequest>[] = [
   {
@@ -44,4 +46,25 @@ export const columns: ColumnDef<DocumentRequest>[] = [
     accessorKey: "created_at",
     header: "Created At",
   },
+  {
+    header: "Actions",
+    cell: ({ row }) => {
+      return <Actions request={row.original} />;
+    },
+  },
 ];
+
+function Actions({ request }: { request: DocumentRequest }) {
+  const navigate = useNavigate();
+  return (
+    <div>
+      <Button
+        size="sm"
+        variant="outline"
+        onClick={() => navigate(`${request.id}/details`)}
+      >
+        View
+      </Button>
+    </div>
+  );
+}

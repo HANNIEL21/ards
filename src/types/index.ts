@@ -92,6 +92,8 @@ export type DocumentRequest = {
   user?: Partial<Alumni>;
   document_type_id: string;
   document_type: Partial<DocumentType>;
+  payment_id?: string;
+  payment?: Partial<Payment>;
   recipient_name?: string;
   recipient_email?: string;
   recipient_phone?: string;

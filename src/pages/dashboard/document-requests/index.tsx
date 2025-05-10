@@ -20,10 +20,13 @@ export default function DocumentRequests() {
         <DataTable
           columns={columns}
           data={
-            data?.filter(
-              (request) =>
-                request.status?.toLowerCase() === params.status?.toLowerCase()
-            ) ?? []
+            params.status
+              ? data?.filter(
+                  (request) =>
+                    request.status?.toLowerCase() ===
+                    params.status?.toLowerCase()
+                ) ?? []
+              : data ?? []
           }
         />
       </div>

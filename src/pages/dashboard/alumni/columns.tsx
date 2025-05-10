@@ -1,6 +1,8 @@
+import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Alumni } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
+import { useNavigate } from "react-router";
 
 export const columns: ColumnDef<Alumni>[] = [
   {
@@ -45,4 +47,21 @@ export const columns: ColumnDef<Alumni>[] = [
     accessorKey: "matric_number",
     header: "Matric Number",
   },
+  {
+    header: "Actions",
+    cell: ({ row }) => {
+      return <Actions user={row.original} />;
+    },
+  },
 ];
+
+function Actions({ user }: { user: Alumni }) {
+  const navigate = useNavigate();
+  return (
+    <div>
+      <Button variant="outline" onClick={() => navigate(user.id)}>
+        View
+      </Button>
+    </div>
+  );
+}

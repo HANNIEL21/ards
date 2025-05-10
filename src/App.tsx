@@ -31,8 +31,10 @@ import Profile from "./pages/user/Profile";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import DocumentTypes from "./pages/dashboard/settings/document-types";
 import PaymentGateways from "./pages/dashboard/settings/payment-gateways";
-import DocumentRequests from "./pages/dashboard/document-requests";
+import DocumentRequests from "./pages/dashboard/document-requests/index";
 import Payments from "./pages/dashboard/payments";
+import AlumniDetails from "./pages/dashboard/alumni/alumni-details";
+import DocumentRequestDetails from "./pages/dashboard/document-requests/details";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -60,6 +62,12 @@ function App() {
               path="document_requests/:status?"
               element={<DocumentRequests />}
             />
+            <Route
+              path="document_requests/:id/details"
+              element={<DocumentRequestDetails />}
+            />
+
+            {/* Payments */}
 
             <Route path="payments/:status?" element={<Payments />} />
 
@@ -71,6 +79,7 @@ function App() {
               />
               <Route path="alumni" element={<Alumni />} />
               <Route path="admins" element={<Admin />} />
+              <Route path="alumni/:id" element={<AlumniDetails />} />
             </Route>
 
             {/* Statements of Result */}

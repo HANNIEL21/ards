@@ -14,10 +14,13 @@ export default function Payments() {
         <DataTable
           columns={columns}
           data={
-            data?.filter(
-              (payment) =>
-                payment.status?.toLowerCase() === params.status?.toLowerCase()
-            ) || []
+            params.status
+              ? data?.filter(
+                  (payment) =>
+                    payment.status?.toLowerCase() ===
+                    params.status?.toLowerCase()
+                ) || []
+              : data || []
           }
         />
       </div>
